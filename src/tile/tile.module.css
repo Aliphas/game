@@ -1,0 +1,33 @@
+.tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+}
+
+.tileWrapperActive {
+  outline: 1px solid white;
+  background-color: green;
+}
+
+.buildingIcon {
+  width: 40%;
+  user-select: none;
+}
+
+.tile img {
+  width: 100%;
+  height: auto;
+}
+
+.power {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  font-size: 14px;
+  outline: 1px solid black;
+  padding: 1px;
+  user-select: none;
+  cursor: default;
+}

@@ -1,0 +1,18 @@
+.game {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+.leftBar, .rightBar {
+  display: flex;
+  width: 300px;
+  height: 100vh;
+  background-color: burlywood;
+}
+.main {
+  display: flex;
+  min-width: 60%;
+  height: 100vh;
+}

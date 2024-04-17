@@ -1,0 +1,13 @@
+.leftBar {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0 5px;
+  width: 250px;
+  height: calc(100vh - 4px);
+  background-color: burlywood;
+  z-index: 10;
+}

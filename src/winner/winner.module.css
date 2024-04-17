@@ -1,0 +1,29 @@
+.winnerWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.winnerBg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 10;
+}
+.winner {
+  position: absolute;
+  top: calc(50vh - 100px);
+  left: calc(50vw - 175px);
+  width: 350px;
+  height: 200px;
+  background-color: burlywood;
+  z-index: 11;
+  color: black;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

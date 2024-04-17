@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import StartMenu from './startMenu/StartMenu';
+import { useAppSelector } from './redux/reduxHooks';
+import { selectPage } from './features/start/gameSlice';
+import Settings from './startMenu/Settings';
+import About from './startMenu/About';
+import GameWrapper from './game/GameWrapper';
 
 function App() {
+  const page: string = useAppSelector(selectPage)
+
+  const renderSwitchPage: () => JSX.Element = () => {
+    switch (page) {
+      case "start":
+        return <StartMenu />
+      case "settings":
+        return <Settings />
+      case "about":
+        return <About />
+      case "game":
+        return <GameWrapper />
+      default:
+        return <StartMenu />
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {renderSwitchPage()}
     </div>
   );
 }
