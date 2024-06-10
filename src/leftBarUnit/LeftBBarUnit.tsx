@@ -6,7 +6,8 @@ import React from "react";
 
 const LeftBarUnit = (props: LeftBarUnitProps) => {
   const { unit, tile, isActivePlayer, buyUnit, gold, playerIndex, color } = props
-  const handleClick = (count: number) => {
+  const maxCount: number = Math.floor(gold / unit.cost)
+  const handleClick: (count: number) => void = (count: number) => {
     buyUnit({ count, unitId: unit.id, tile, gold })
   }
   return <div className={styles.leftBarUnit}>
@@ -20,6 +21,7 @@ const LeftBarUnit = (props: LeftBarUnitProps) => {
           <p>Cost: {unit.cost}</p>
           <p>Power: {unit.power}</p>
         </div>
+
       </React.Fragment>
     }>
       <Box
@@ -29,7 +31,8 @@ const LeftBarUnit = (props: LeftBarUnitProps) => {
         {unit && `${unit.name}: ${unit.count}`}
         {tile.building === "castle" && playerIndex === 0 && isActivePlayer &&
           <div className={styles.buttons}>
-            <Button className={styles.plusButton}
+            <Button
+              className={styles.plusButton}
               sx={{
                 backgroundColor: "black",
                 color: "white",
@@ -40,19 +43,36 @@ const LeftBarUnit = (props: LeftBarUnitProps) => {
                 }
               }}
               onClick={() => handleClick(1)}>+</Button>
-            <Button className={styles.plusButton} sx={{
-              backgroundColor: "black",
-              color: "white",
-              minWidth: "0px",
-              outline: "1px solid black",
-              '&:hover': {
-                backgroundColor: tile.owner.color
-              }
-            }}
-              onClick={() => handleClick(10)}>+10</Button>
+            {maxCount > 10 &&
+              <Button
+                className={styles.plusButton}
+                sx={{
+                  backgroundColor: "black",
+                  color: "white",
+                  minWidth: "0px",
+                  outline: "1px solid black",
+                  '&:hover': {
+                    backgroundColor: tile.owner.color
+                  }
+                }}
+                onClick={() => handleClick(10)}>+10</Button>
+            }
+            {maxCount > 0 &&
+              <Button
+                className={styles.plusButton}
+                sx={{
+                  backgroundColor: "black",
+                  color: "white",
+                  minWidth: "0px",
+                  outline: "1px solid black",
+                  '&:hover': {
+                    backgroundColor: tile.owner.color
+                  }
+                }}
+                onClick={() => handleClick(maxCount)}>+{maxCount}</Button>
+            }
           </div>
         }
-
       </Box>
     </HtmlTooltip>
   </div>

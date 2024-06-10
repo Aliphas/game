@@ -1,17 +1,106 @@
 .rightBar {
-  position: absolute;
-  right: 2px;
-  top: 2px;
+  display: flex;
+  align-items: center;
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0 5px;
-  width: 250px;
+  margin: 2px 2px 0 0;
+  width: 300px;
   height: calc(100vh - 4px);
-  background-color: burlywood;
+  background-color: #404040;
+  color: #f7912b;
   z-index: 10;
 }
-.rightBar > p {
-  padding: 10px;
-  margin: 0;
+
+.rightBarContent {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.playerData {
+  margin-bottom: 10px;
+}
+
+.rightBar h3 {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.rightBar p {
+  margin-bottom: 5px;
+}
+
+.menuButtonWrapper {
+  display: flex;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.menuButton {
+  width: 50px;
+  height: auto;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.menuButton:hover {
+  background-color: #555555;
+  color: white;
+  cursor: pointer;
+}
+
+.hideButton {
+  position: absolute;
+  right: 285px;
+  top: calc(50vh - 22px);
+  width: 40px;
+  height: 70px;
+}
+
+.hideButton svg {
+  width: 100%;
+  height: auto;
+}
+
+.hideBar {
+  animation: hideBar 200ms forwards;
+}
+
+.showBar {
+  animation: showBar 200ms forwards;
+}
+
+@keyframes hideBar {
+  0% {
+    transform: translateX(0%);
+  }
+
+  50% {
+    transform: translateX(50%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes showBar {
+  0% {
+    transform: translateX(100%);
+  }
+
+  50% {
+    transform: translateX(50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
 }

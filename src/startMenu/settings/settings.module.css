@@ -1,0 +1,48 @@
+.backArrowIcon {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 70px;
+  height: auto;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.backArrowIcon:hover {
+  background-color: #555555;
+  color: white;
+  cursor: pointer;
+}
+
+.settings {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  outline: 1px solid #f7912b;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.item {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #f7912b;
+}
+
+.itemField {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+  margin-left: 10px;
+}
+
+.itemButton {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 10px;
+}

@@ -1,0 +1,15 @@
+.backArrowIcon {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 70px;
+  height: auto;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.backArrowIcon:hover {
+  background-color: #555555;
+  color: white;
+  cursor: pointer;
+}

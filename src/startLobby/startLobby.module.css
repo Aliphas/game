@@ -1,0 +1,101 @@
+.startLobby {
+  width: 800px;
+  height: 700px;
+  outline: 2px solid #f7912b;
+  color: #f7912b;
+  position: relative;
+  padding: 15px 0;
+  border-radius: 5px;
+
+}
+
+.index {
+  width: 20px;
+}
+
+.player,
+.titles {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 20px;
+  user-select: none;
+  outline: 1px solid #505050;
+}
+
+.player:hover {
+  background-color: #505050;
+}
+
+.name {
+  width: 150px;
+  margin: 0 10px;
+}
+
+.color {
+  margin: 0 10px;
+}
+
+.color svg {
+  display: none;
+}
+
+.color .MuiList-root {
+  padding-top: 0;
+}
+
+.color li:hover {
+  outline: 1px solid black;
+}
+
+.color div {
+  width: 35px;
+  height: 35px;
+}
+
+.delete {
+  margin: 0 10px;
+}
+
+.addPlayerButton {
+  margin: 20px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 20px;
+  padding: 0 10px;
+  width: calc(100% - 20px);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mapLength {
+  width: 350px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.startButton {
+  height: 50px;
+}
+
+.backArrowIcon {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 70px;
+  height: auto;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.backArrowIcon:hover {
+  background-color: #555555;
+  color: white;
+  cursor: pointer;
+}

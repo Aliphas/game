@@ -20,7 +20,7 @@ const useCheckAction = () => {
       && setTimeout(() => checkAction({ activeTile, targetTile }), 350)
     setTimeout(() => setIsMoving(false), 350)
   }
-  const moving = () => {
+  const moving: () => boolean = () => {
     setIsMoving(true)
     return true
   }

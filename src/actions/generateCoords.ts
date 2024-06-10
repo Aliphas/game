@@ -1,28 +1,18 @@
 import { cloneDeep } from 'lodash';
-import { useAppSelector } from './../redux/reduxHooks';
-import { MapDataProps, Tile, TileCoordProps } from '../interfaces';
-import { selectPlayersCount } from '../features/players/playersSlice';
-import { selectMapData } from '../features/map/mapSlice';
+import { MapDataProps } from '../interfaces';
 
-const useGenerateCoords = () => {
-  const mapData: MapDataProps = useAppSelector(selectMapData)
-  const availableTiles: Tile[] = cloneDeep(mapData).filter(tile => tile.building === "none")
-  const playersCount: number = useAppSelector(selectPlayersCount)
+const generateCoords = (mapData: MapDataProps, count: number) => {
+    const mapClone = cloneDeep(mapData)
 
-  const generateCoords = () => {
-    const index: number = Math.floor(Math.random() * availableTiles.length)
-    const newTile: Tile = availableTiles[index]
-    const coords: TileCoordProps = newTile.coords
-    availableTiles.splice(availableTiles.indexOf(newTile), 1)
-    return coords
-  }
-  const generateArray = () => {
-    return Array.from({ length: playersCount }).map(() => { 
-      const coords: TileCoordProps = generateCoords()
-      return coords
+    return Array.from({ length: count }).map(() => {
+      const tileIndex = Math.floor(Math.random() * mapClone.length)
+      const tile = cloneDeep(mapClone[tileIndex])
+      mapClone.splice(tileIndex, 1)
+      return tile
     })
-  }
-  return generateArray()
-}
 
-export default useGenerateCoords
+  }
+
+
+
+export default generateCoords

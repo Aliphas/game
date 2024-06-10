@@ -1,19 +1,21 @@
 .menuBg {
   display: flex;
   justify-content: center;
-  background-color: burlywood;
   width: 700px;
   height: 500px;
   color: black;
 }
+
 .menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .menuButton {
   width: 180px;
   height: 40px;
   margin: 20px;
+  padding: 10px;
 }

@@ -1,35 +1,7 @@
 [
   {
     "id": "r0",
-    "race": "Neutrals",
-    "units": [
-      {
-        "id": "u0",
-        "name": "Barbarian",
-        "attack": 3,
-        "hp": 8,
-        "armor": 0,
-        "resist": 1,
-        "power": 2,
-        "distance": 2,
-        "cost": 0
-      },
-      {
-        "id": "u1",
-        "name": "Wolf",
-        "attack": 4,
-        "hp": 5,
-        "armor": 1,
-        "resist": 0,
-        "power": 2,
-        "distance": 2,
-        "cost": 0
-      }
-    ]
-  },
-  {
-    "id": "r1",
-    "race": "human",
+    "race": "Humans",
     "units": [
       {
         "id": "u0",
@@ -52,6 +24,62 @@
         "power": 7,
         "distance": 3,
         "cost": 5
+      }
+    ]
+  },
+  {
+    "id": "r1",
+    "race": "Elfs",
+    "units": [
+      {
+        "id": "u0",
+        "name": "Elf",
+        "attack": 6,
+        "hp": 6,
+        "armor": 1,
+        "resist": 2,
+        "power": 5,
+        "distance": 2,
+        "cost": 4
+      },
+      {
+        "id": "u1",
+        "name": "Ranger",
+        "attack": 10,
+        "hp": 5,
+        "armor": 1,
+        "resist": 2,
+        "power": 8,
+        "distance": 6,
+        "cost": 6
+      }
+    ]
+  },
+  {
+    "id": "r2",
+    "race": "Orcs",
+    "units": [
+      {
+        "id": "u0",
+        "name": "Orc",
+        "attack": 5,
+        "hp": 15,
+        "armor": 4,
+        "resist": 0,
+        "power": 7,
+        "distance": 1,
+        "cost": 8
+      },
+      {
+        "id": "u1",
+        "name": "Ogre",
+        "attack": 10,
+        "hp": 25,
+        "armor": 7,
+        "resist": 1,
+        "power": 12,
+        "distance": 1,
+        "cost": 12
       }
     ]
   }

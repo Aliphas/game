@@ -5,13 +5,14 @@ import LeftBarWrapper from "../leftBar/LeftBarWrapper";
 import WinnerWrapper from "../winner/WinnerWrapper";
 import { GameProps } from "../interfaces";
 
-const Game = ({winner}: GameProps) => {
+const Game = ({ winner }: GameProps) => {
+
   return (
     <div className={styles.game}>
       <LeftBarWrapper />
       <MapWrapper />
       <RightBarWrapper />
-      {winner &&<WinnerWrapper winner={winner}/>}
+      {winner && <WinnerWrapper winner={winner}/>}
     </div>
   )
 }

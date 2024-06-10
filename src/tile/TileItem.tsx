@@ -5,10 +5,7 @@ import castleIcon from "../assets/castle.png"
 const TileItem = (props: TileItemProps) => {
   const { isActive, isTarget, isPlayer, changeActiveTile, handleMove, tileData, power, size, color } = props
 
-  const handleTarget: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-    = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      handleMove(e)
-    }
+  const handleTarget = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => { handleMove(e) }
   const tileColor: string = tileData.owner.color
 
   return (

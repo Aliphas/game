@@ -1,5 +1,9 @@
 //MAP
 
+import { SelectChangeEvent } from "@mui/material"
+import { Dispatch } from "@reduxjs/toolkit"
+import React from "react"
+
 export interface MapWrapperProps {
   data: DataProps
 }
@@ -70,8 +74,14 @@ export interface TileItemProps {
 
 //PLAYER
 
-export interface playersSliceProps {
+export interface AddNewPlayerProps {
+  playerInfo: PlayerInfoProps
+  generatedTile: Tile
+}
+
+export interface PlayersSliceProps {
   players: PlayerProps[]
+  name: string
   count: number
   activeIndex: number
   activeTile: TileCoordProps | undefined
@@ -81,7 +91,6 @@ export interface PlayerProps {
   raceId: string
   name: string
   color: string
-  isPlayer: boolean
   castle: TileCoordProps
   gold: number
   actionCount: number
@@ -102,7 +111,8 @@ export interface RaceProps {
 //GLOBAL DATA
 
 export interface GameState {
-  value: boolean
+  isGame: boolean
+  race: string
   page: string
   turn: number
   powerPool: number
@@ -126,8 +136,13 @@ export interface WinnerWrapperProps {
   winner: string
 }
 export interface GameProps {
-  winner : string | undefined
+  winner: string | undefined
 }
+export interface RaceData {
+  id: string
+  name: string
+}
+export interface RacesList extends Array<RaceData> { }
 
 //ARMY
 
@@ -174,12 +189,12 @@ export interface HitProps {
 
 //LEFT BAR
 export interface LeftBarProps {
-  activeTile: Tile | undefined
+  activeTile: Tile
   isActivePlayer: boolean
   buyUnit: (props: buyUnitProps) => void
   gold: number
   playerIndex: number
-  color: string
+  race: string
 }
 export interface LeftBarUnitProps {
   unit: UnitProps
@@ -204,4 +219,89 @@ export interface RightBarProps {
   turn: number
   nextTurn: () => void
   index: number
+  openMenu: () => void
+  race: string
+}
+//MENU
+
+export interface PlayerInfoProps {
+  id: string
+  raceId: string
+  name: string
+  color: string
+  newColor?: string
+}
+
+export interface StartMenuProps {
+  isGame: boolean
+}
+export interface StartLobbyProps {
+  handleStart: () => void
+  addPlayerInfo: () => void
+  changePlayerInfo: (playerInfo: PlayerInfoProps) => void
+  playersInfo: PlayerInfoProps[]
+  isNewAvailable: boolean
+  deletePlayerInfo: (index: number) => void
+  mapSize: number
+  handleMapSize: (e: number) => void
+  handleExit: () => void
+}
+export interface PlayerItemWrapperProps {
+  index: number
+  playersInfo: PlayerInfoProps[]
+  changePlayerInfo: (playerInfo: PlayerInfoProps) => void
+  deletePlayerInfo: (index: number) => void
+}
+export interface PlayerItemProps {
+  playerInfo: PlayerInfoProps
+  handleChange: (props: HandleChangePlayerInfoProps) => void
+  colors: Array<string>
+  racesList: RacesListProps
+  handleDelete: () => void
+  index: number
+}
+export interface RaceInfo {
+  id: string
+  name: string
+}
+export interface RacesListProps extends Array<RaceInfo> { }
+
+export interface GeneratePlayerProps {
+  index: number
+  playerInfo: PlayerInfoProps
+}
+
+export interface SettingsProps {
+  handleExit: () => void
+  isNameField: boolean
+  setIsNameField: React.Dispatch<React.SetStateAction<boolean>>
+  handleChangeName: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  handleConfirmName: () => void
+  name: string
+  isTileSizeField: boolean
+  setIsTileSizeField: React.Dispatch<React.SetStateAction<boolean>>
+  handleChangeTileSize: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  handleConfirmTileSize: () => void
+  tileSize: number
+}
+export interface SettingsItemProps {
+  isField: boolean
+  setIsField: React.Dispatch<React.SetStateAction<boolean>>
+  itemname: string
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  handleConfirm: () => void
+
+  value: string | number
+}
+export interface AboutProps {
+  handleExit: () => void
+}
+export interface ColorsListProps {
+  id: number
+  name: string
+  available: boolean
+}
+export interface HandleChangePlayerInfoProps {
+  race?: string
+  color?: string
 }

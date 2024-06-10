@@ -5,7 +5,7 @@ import { ActionProps, HitProps } from './../interfaces';
 import { changePlayerActiveTile, changePlayerAlive, playerActionCounter } from '../features/players/playersSlice';
 import { Dispatch, UnknownAction } from '@reduxjs/toolkit';
 
-const useAttackAction = () => {
+const useAttackAction  = () => {
   const dispatch: Dispatch<UnknownAction> = useDispatch()
 
   const hit = (props: HitProps) => {
@@ -29,12 +29,12 @@ const useAttackAction = () => {
     let targetTileArmy = targetTileClone.army
 
     targetTileArmy.filter(unit => unit.count > 0).length > 0 && activeTileArmy.filter(unit => unit.count > 0).map(unit => {
-      hit({attacker: unit, targetArmy: targetTileArmy})
+      return hit({attacker: unit, targetArmy: targetTileArmy})
     })
 
     targetTileArmy.filter(unit => unit.count > 0).length > 0 &&  activeTileArmy.filter(unit => unit.count > 0).length > 0 
     && targetTileArmy.filter(unit => unit.count > 0).map(unit => {
-      hit({attacker: unit, targetArmy: activeTileArmy})
+      return hit({attacker: unit, targetArmy: activeTileArmy})
     })
     
     targetTileClone.army.filter(unit => unit.count > 0).length === 0 && targetTile.building === "castle" 
@@ -44,7 +44,7 @@ const useAttackAction = () => {
     && (targetTileClone.owner = cloneDeep(activeTile.owner))
       && (targetTileClone.army = cloneDeep(activeTileClone.army))
       && (activeTileClone.army.map((_, index) => {
-        activeTileClone.army[index].count = 0
+        return activeTileClone.army[index].count = 0
       }))
       && (targetTileClone.building = "none")
       && dispatch(changePlayerActiveTile(targetTileClone.coords))

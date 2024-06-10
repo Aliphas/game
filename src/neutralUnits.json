@@ -1,0 +1,28 @@
+{
+  "id": "r0",
+  "race": "Neutrals",
+  "units": [
+    {
+      "id": "u0",
+      "name": "Barbarian",
+      "attack": 3,
+      "hp": 8,
+      "armor": 0,
+      "resist": 1,
+      "power": 2,
+      "distance": 2,
+      "cost": 0
+    },
+    {
+      "id": "u1",
+      "name": "Wolf",
+      "attack": 4,
+      "hp": 5,
+      "armor": 1,
+      "resist": 0,
+      "power": 2,
+      "distance": 2,
+      "cost": 0
+    }
+  ]
+}

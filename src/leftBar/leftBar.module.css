@@ -1,13 +1,68 @@
 .leftBar {
-  position: absolute;
-  left: 2px;
-  top: 2px;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0 5px;
-  width: 250px;
+  align-items: center;
+  margin: 2px 0 0 2px;
+  width: 300px;
   height: calc(100vh - 4px);
-  background-color: burlywood;
+  background-color: #404040;
+  color: #f7912b;
   z-index: 10;
+}
+
+.leftBarContent {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hideButton {
+  position: absolute;
+  left: 285px;
+  top: calc(50vh - 22px);
+  width: 40px;
+  height: 70px;
+}
+
+.hideButton svg {
+  width: 100%;
+  height: auto;
+}
+
+.hideBar {
+  animation: hideBar 200ms forwards;
+}
+
+.showBar {
+  animation: showBar 200ms forwards;
+}
+
+@keyframes hideBar {
+  50% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes showBar {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
 }

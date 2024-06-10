@@ -8,16 +8,16 @@ import { useEffect, useRef } from "react"
 import { selectActiveIndex } from "../features/players/playersSlice"
 
 const MapWrapper = () => {
-  const mapLength = useAppSelector<number>(selectMapLength)
-  const mapData = useAppSelector<MapDataProps>(selectMapData)
-  const size = useAppSelector<number>(selectTileSize)
-  const screenPos = useAppSelector<TileCoordProps>(selectScreenPos)
-  const activePlayer = useAppSelector<number>(selectActiveIndex)
+  const mapLength: number = useAppSelector(selectMapLength)
+  const mapData: MapDataProps = useAppSelector(selectMapData)
+  const size: number = useAppSelector(selectTileSize)
+  const screenPos: TileCoordProps = useAppSelector(selectScreenPos)
+  const activePlayer: number = useAppSelector(selectActiveIndex)
   const currScreenPos: TileCoordProps = {
     w: (window.innerWidth / 2) - screenPos.w*size,
     h: (window.innerHeight / 2) -screenPos.h*size
   }
-  const mapRef = useRef<HTMLInputElement>(null)
+  const mapRef: React.RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null)
   useEffect(() => {
     mapRef.current && (mapRef.current.style.transform = "none")
   }, [activePlayer])

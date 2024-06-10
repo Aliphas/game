@@ -1,9 +1,10 @@
-import { PlayerProps, playersSliceProps, TileCoordProps } from './../../interfaces';
+import { PlayerProps, PlayersSliceProps, TileCoordProps } from './../../interfaces';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "../../redux/store"
 
-const initialState: playersSliceProps = {
+const initialState: PlayersSliceProps = {
   players: [],
+  name: "User",
   count: 4,
   activeIndex: 0,
   activeTile: undefined
@@ -19,7 +20,6 @@ export const playersSlice = createSlice({
         raceId: action.payload.raceId,
         name: action.payload.name,
         color: action.payload.color,
-        isPlayer: action.payload.isPlayer,
         castle: action.payload.castle,
         gold: 50,
         activeTileCoords: action.payload.castle,
@@ -50,6 +50,15 @@ export const playersSlice = createSlice({
       state.players[index].color = action.payload.color
       state.players[index].castle = action.payload.castle
     },
+    changeAllPlayers: (state, action: PayloadAction<PlayerProps[]>) => {
+      state.players = action.payload
+    },
+    deletePlayer: (state, action: PayloadAction<number>) => {
+      state.players.splice(action.payload, 1)
+    },
+    changeName: (state, action: PayloadAction<string>) => {
+      state.name = action.payload
+    },
     changeGold: (state, action: PayloadAction<number>) => {
       state.players[state.activeIndex].gold += action.payload
     },
@@ -72,6 +81,7 @@ export const playersSlice = createSlice({
 
 export const selectPlayersCount: (state: RootState) => number = (state: RootState) => state.players.count
 export const selectPlayers: (state: RootState) => PlayerProps[] = (state: RootState) => state.players.players
+export const selectName: (state: RootState) => string = (state: RootState) => state.players.name
 export const selectGold: (state: RootState) => number = (state: RootState) =>
   state.players.players[state.players.activeIndex].gold
 export const selectPlayerActionCount: (state: RootState) => number = (state: RootState) =>
@@ -85,7 +95,8 @@ export const selectActivePlayer: (state: RootState) => PlayerProps = (state: Roo
 export const selectActiveTileCoords: (state: RootState) => TileCoordProps = (state: RootState) =>
   state.players.players[state.players.activeIndex].activeTileCoords
 
-export const { addPlayer, changeActiveIndex, changePlayer, changeGold, changePlayerActiveTile,
-  playerActionCounter, changePlayerActionMaxCount, changePlayerAlive, resetPlayersSlice } = playersSlice.actions
+export const { addPlayer, changeActiveIndex, changePlayer, changeName, changeGold,
+  changePlayerActiveTile, playerActionCounter, changePlayerActionMaxCount,
+  changePlayerAlive, resetPlayersSlice, deletePlayer, changeAllPlayers } = playersSlice.actions
 
 export default playersSlice.reducer

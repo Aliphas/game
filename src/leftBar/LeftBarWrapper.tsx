@@ -1,22 +1,32 @@
 import useBuyUnit from "../actions/buyUnit"
+import getRaceName from "../actions/getRaceName"
 import { selectMapData } from "../features/map/mapSlice"
-// import { selectActiveTile } from "../features/map/mapSlice"
 import { selectActivePlayer, selectActiveTileCoords, selectPlayers } from "../features/players/playersSlice"
-import {  PlayerProps, Tile, TileCoordProps } from "../interfaces"
+import { buyUnitProps, MapDataProps, PlayerProps, Tile, TileCoordProps } from "../interfaces"
 import { useAppSelector } from "../redux/reduxHooks"
 import LeftBar from "./LeftBar"
 
 const LeftBarWrapper = () => {
-  const activeTileCoords = useAppSelector<TileCoordProps | undefined>(selectActiveTileCoords)
-  const mapData = useAppSelector(selectMapData)
-  const activeTile = mapData.find(tile => tile.coords.w === activeTileCoords?.w && tile.coords.h === activeTileCoords.h)
-  const activePlayer = useAppSelector<PlayerProps>(selectActivePlayer)
-  const players = useAppSelector<PlayerProps[]>(selectPlayers)
-  const playerIndex = players.indexOf(activePlayer)
+  const activeTileCoords: TileCoordProps = useAppSelector(selectActiveTileCoords)
+  const mapData: MapDataProps = useAppSelector(selectMapData)
+  const activeTile: Tile = mapData.find(tile => tile.coords.w === activeTileCoords.w && tile.coords.h === activeTileCoords.h)!
+  const activePlayer: PlayerProps = useAppSelector(selectActivePlayer)
+  const players: PlayerProps[] = useAppSelector(selectPlayers)
+  const playerIndex: number = players.indexOf(activePlayer)
   const isActivePlayer: boolean = activeTile?.owner.id === activePlayer.id
-  const buyUnit = useBuyUnit()
+  const race: string = getRaceName(activeTile.owner.raceId)
+  const buyUnit: (props: buyUnitProps) => void = useBuyUnit()
 
-  return <LeftBar activeTile={activeTile} isActivePlayer={isActivePlayer} buyUnit={buyUnit} gold={activePlayer.gold} playerIndex={playerIndex} color={activePlayer.color}/>
+  return (
+    <LeftBar
+      activeTile={activeTile}
+      isActivePlayer={isActivePlayer}
+      buyUnit={buyUnit} 
+      gold={activePlayer.gold}
+      playerIndex={playerIndex}
+      race={race}
+    />
+  )
 }
 
 export default LeftBarWrapper
